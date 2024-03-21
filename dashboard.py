@@ -39,7 +39,7 @@ def RFM(df_order_payments_orders_customers):
     df_RFM.drop("max_order_purchase_timestamp",axis=1,inplace=True)
     return df_RFM
 df_orders_delivered["order_purchase_timestamp"] = pd.to_datetime( df_orders_delivered["order_purchase_timestamp"])
-df_order_items_products_english_orders["order_purchase_timestamp"]=pd.to_datetime(df_order_items_products_english_orders["order_purchase_timestamp"])
+df_order_items_products_english_orders["shipping_limit_date"]=pd.to_datetime(df_order_items_products_english_orders["shipping_limit_date"])
 df_order_payments_orders_customers["order_purchase_timestamp"]=pd.to_datetime(df_order_payments_orders_customers["order_purchase_timestamp"])
 min_date = df_order_payments_orders_customers["order_purchase_timestamp"].min()
 max_date = df_order_payments_orders_customers["order_purchase_timestamp"].max()
@@ -54,8 +54,8 @@ with st.sidebar:
     )
 df_orders_delivered = df_orders_delivered[(df_orders_delivered["order_purchase_timestamp"]>=str(start_date))&
                                          (df_orders_delivered["order_purchase_timestamp"]<= str(end_date)) ]
-df_order_items_products_english_orders = df_order_items_products_english_orders[(df_order_items_products_english_orders["order_purchase_timestamp"]>=str(start_date))&
-                                         (df_order_items_products_english_orders["order_purchase_timestamp"]<= str(end_date)) ]
+df_order_items_products_english_orders = df_order_items_products_english_orders[(df_order_items_products_english_orders["shipping_limit_date"]>=str(start_date))&
+                                         (df_order_items_products_english_orders["shipping_limit_date"]<= str(end_date)) ]
 df_order_payments_orders_customers = df_order_payments_orders_customers[(df_order_payments_orders_customers["order_purchase_timestamp"]>=str(start_date))&
                                          (df_order_payments_orders_customers["order_purchase_timestamp"]<= str(end_date)) ]
 df_yearly_order = yearly_order(df_orders_delivered)
