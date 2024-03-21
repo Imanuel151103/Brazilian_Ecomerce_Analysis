@@ -12,3 +12,5 @@ pip install pandas scipy matplotlib seaborn jupyter streamlit
 cd dashboard
 streamlit run dashboard.py
 ```
+## Deployed streamlit app
+Link: [here](https://brazilianecomerceanalysis-q2fnturppkg9bjmsxc5zgg.streamlit.app/).
